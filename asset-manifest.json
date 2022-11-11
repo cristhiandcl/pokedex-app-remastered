@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pokemon-app-remastered/static/css/main.71348d57.css",
+    "main.js": "/pokemon-app-remastered/static/js/main.0b2f8f64.js",
+    "index.html": "/pokemon-app-remastered/index.html",
+    "main.71348d57.css.map": "/pokemon-app-remastered/static/css/main.71348d57.css.map",
+    "main.0b2f8f64.js.map": "/pokemon-app-remastered/static/js/main.0b2f8f64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71348d57.css",
+    "static/js/main.0b2f8f64.js"
+  ]
+}
