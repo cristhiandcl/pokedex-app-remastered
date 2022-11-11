@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Router basename="/pokedex-app-remastered/">
+  <Router basename="/pokedex-app-remastered">
     <App />
   </Router>
   // </React.StrictMode>
