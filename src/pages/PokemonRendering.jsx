@@ -6,12 +6,12 @@ import DropDownMenu from "../components/pages/pokemonRendering/DropDownMenu";
 
 function PokemonRendering({ pokemons, setPokemons, resetData }) {
   const [isDrop, setIsDrop] = useState(false);
+  const [options, setOptions] = useState("Inferior number");
 
   function handleSurprise() {
-    setPokemons([...resetData]);
-    setPokemons(pokemons.sort((a, b) => 0.5 - Math.random()));
+    setOptions("Inferior number");
+    setPokemons(resetData.sort((a, b) => 0.5 - Math.random()));
     setIsDrop(!isDrop);
-    console.log(pokemons);
   }
 
   function setPokemonsData() {
@@ -24,7 +24,10 @@ function PokemonRendering({ pokemons, setPokemons, resetData }) {
     </Link>
   ));
 
-  console.log("rendered", pokemons, resetData);
+  const jsonArray = JSON.stringify(pokemons);
+  console.log(jsonArray);
+
+  console.log(pokemons);
 
   return (
     <div className="font-bold text-green-300 flex flex-col items-center">
@@ -50,10 +53,12 @@ function PokemonRendering({ pokemons, setPokemons, resetData }) {
         <div className="flex items-center space-x-3">
           <p className="text-xl text-black">Order by</p>
           <DropDownMenu
-            pokemons={pokemons}
-            setData={setPokemonsData}
+            resetData={resetData}
+            setPokemons={setPokemons}
             setIsDrop={setIsDrop}
             isDrop={isDrop}
+            options={options}
+            setOptions={setOptions}
           />
         </div>
       </div>

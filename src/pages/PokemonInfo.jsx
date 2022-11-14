@@ -13,7 +13,7 @@ function PokemonInfo({ pokemons }) {
 
   useEffect(() => {
     getPokemonSpecies(name);
-  }, []);
+  }, [name]);
 
   async function getPokemonSpecies(name) {
     const response = await fetch(
@@ -29,14 +29,13 @@ function PokemonInfo({ pokemons }) {
           : pokemonSpecies.habitat.name,
       category: pokemonSpecies.genera,
     });
-    // setPokemonCategory(pokemonSpecies.genera);
   }
 
-  console.log(name);
-  console.log(pokemon);
-  // console.log("category", setPokemonCategory);
-  // console.log("species", pokemonData.category);
-  // console.log("weakness", pokemonWeakness);
+  console.log("rendered");
+  console.log(
+    pokemonData &&
+      pokemonData.category.find((elem) => elem.language.name === "en").genus
+  );
 
   return (
     <>

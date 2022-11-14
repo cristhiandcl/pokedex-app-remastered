@@ -29,7 +29,7 @@ function Evolution({ pokemonEvolution }) {
       setEvolution([incomingData.chain.species]);
     }
   }
-  console.log(evolution);
+  // console.log(evolution);
   return (
     <div className="flex flex-col border-2 bg-gray-100 rounded-md rounded-bl-3xl p-16 space-y-7">
       <p className="font-bold text-3xl text-center">Evolutions</p>

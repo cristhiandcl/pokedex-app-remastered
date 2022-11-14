@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 function PokemonData({ name, pokemon, pokemonData }) {
   const [pokemonWeakness, setPokemonWeakness] = useState([]);
-  const [pokemonCategory, setPokemonCategory] = useState();
 
   const types = {
     normal: "bg-stone-500",
@@ -65,9 +64,6 @@ function PokemonData({ name, pokemon, pokemonData }) {
           ...prevPokemonWeakness,
           ...Weakness.damage_relations.double_damage_from,
         ]);
-        setPokemonCategory([
-          pokemonData.category.find((elem) => elem.language.name === "en"),
-        ]);
       }
     }
     getPokemonWeakness();
@@ -75,8 +71,6 @@ function PokemonData({ name, pokemon, pokemonData }) {
 
   const tempVar = pokemonWeakness.map((weakness) => weakness.name);
   const WeaknessToRender = [...new Set(tempVar)];
-
-  console.log("category", pokemonCategory);
 
   return (
     <div className="flex flex-col items-center justify-center space-y-10">
@@ -104,10 +98,10 @@ function PokemonData({ name, pokemon, pokemonData }) {
               <p className="text-white">Category</p>
 
               <p>
-                {/* {pokemonData &&
+                {pokemonData &&
                   pokemonData.category.find(
                     (elem) => elem.language.name === "en"
-                  ).genus} */}
+                  ).genus}
               </p>
             </div>
             <div className="flex flex-col space-y-3">
