@@ -37,12 +37,15 @@ function Evolution({ pokemonEvolution }) {
     <div className="flex flex-col border-2 bg-gray-100 rounded-md rounded-bl-3xl p-16 space-y-7">
       <p className="font-bold text-3xl text-center">Evolutions</p>
       {p !== "" && <p className="font-bold">{p}</p>}
-      <div className="flex space-x-4 ">
+      <div className="flex flex-col lg:flex-row space-x-4 ">
         {evolution !== undefined &&
           evolution.map((evo, i) => {
             const id = evo.url.slice(42, evo.url.length - 1);
             return (
-              <div key={i} className="flex items-center space-x-4">
+              <div
+                key={i}
+                className="flex flex-col lg:flex-row items-center space-x-4"
+              >
                 <Link to={`/pokemons/${evo.name}`}>
                   <div
                     onClick={() =>
@@ -67,7 +70,9 @@ function Evolution({ pokemonEvolution }) {
                   </div>
                 </Link>
                 {i < evolution.length - 1 && (
-                  <p className="text-8xl font-bold">{">"}</p>
+                  <p className="text-8xl font-bold rotate-90 lg:rotate-0">
+                    {">"}
+                  </p>
                 )}
               </div>
             );

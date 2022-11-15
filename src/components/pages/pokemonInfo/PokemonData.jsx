@@ -73,19 +73,21 @@ function PokemonData({ name, pokemon, pokemonData }) {
   const WeaknessToRender = [...new Set(tempVar)];
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-10">
-      <div className="text-5xl font-bold">
+    <div className="flex flex-col items-center justify-center space-y-4">
+      <div className="text-3xl sm:text-5xl font-bold">
         {name[0].toUpperCase() + name.slice(1)}{" "}
         <span className="text-gray-300">N.° {pokemon[0].id}</span>
       </div>
-      <div className="flex space-x-6 justify-center items-center px-20">
+      <div className="flex flex-col md:flex-row justify-center items-center space-y-8 sm:w-full lg:w-3/4 px-4 sm:px-12 sm:space-x-8">
         <img
           alt={name}
           className="rounded-xl p-4 bg-gray-100 w-[350px] h-[400px]"
           src={pokemon[0].sprites.other["official-artwork"].front_default}
         />
-        <div className=" w-2/6 space-y-8 px-4">
-          <p className="">{pokemonData && pokemonData.description}</p>
+        <div className="w-3/4 space-y-8">
+          <p className="text-center">
+            {pokemonData && pokemonData.description}
+          </p>
           <div className="grid grid-cols-2 p-3 gap-y-6 bg-blue-400 font-bold rounded-xl">
             <div className="flex flex-col space-y-3">
               <p className="text-white">Height</p>
@@ -131,11 +133,11 @@ function PokemonData({ name, pokemon, pokemonData }) {
           </div>
         </div>
       </div>
-      <div className="flex w-4/6 items-center justify-center space-x-16 text-white">
-        <div className="space-y-4 flex items-center flex-col w-2/5 border bg-gray-100 p-6 rounded-2xl">
+      <div className="flex flex-col md:flex-row md:space-x-16 w-full px-16 items-center justify-center text-white space-y-6">
+        <div className="space-y-4 flex items-center flex-col mt-10 w-full border bg-gray-100 p-6 rounded-2xl order-2 md:order-1">
           <p className="text-3xl font-bold text-black">Stats</p>
           {data !== undefined && (
-            <div className="flex flex-col w-5/6 space-y-4">
+            <div className="flex flex-col space-y-4 w-full">
               {data.stats.map((elem, i) => (
                 <div key={i} className="">
                   <p className="text-black font-bold">{elem}</p>
@@ -149,10 +151,10 @@ function PokemonData({ name, pokemon, pokemonData }) {
             </div>
           )}
         </div>
-        <div className="space-y-6 3/5">
+        <div className="space-y-6 order-1 md:order-2 w-full">
           <div className="flex flex-col space-y-6">
-            <p className="text-3xl font-bold text-black">Type</p>
-            <div className="grid gap-x-2 grid-cols-2 w-fit">
+            <p className="text-3xl font-bold text-black text-center">Type</p>
+            <div className="grid gap-x-2 grid-cols-2">
               {pokemon[0].types.map((elem) => (
                 <p
                   key={elem.type.name}
@@ -166,8 +168,10 @@ function PokemonData({ name, pokemon, pokemonData }) {
             </div>
           </div>
           <div className="space-y-6">
-            <p className="text-3xl font-bold text-black">Weakness</p>
-            <div className="grid gap-x-2 grid-cols-3 gap-y-3 w-fit">
+            <p className="text-3xl font-bold text-black text-center">
+              Weakness
+            </p>
+            <div className="grid gap-x-2 grid-cols-2 gap-y-3 sm:grid-cols-3">
               {pokemonWeakness !== undefined &&
                 WeaknessToRender.map((weakness) => (
                   <p
