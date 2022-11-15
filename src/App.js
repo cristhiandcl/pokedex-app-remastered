@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import PokemonInfo from "./pages/PokemonInfo";
 import { useState, useEffect } from "react";
-// import { data } from "../data";
+import { trial } from "./trial";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -12,29 +12,29 @@ function App() {
 
   useEffect(() => {
     getData();
-    // setPokemons([...data]);
-    // setResetData([...data]);
+    // setPokemons([...trial]);
+    // setResetData([...trial]);
   }, []);
 
   async function getData() {
-    for (let i = 1; i < 500; i++) {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
-      const data = await response.json();
-      setPokemons((prevPokemons) => {
-        return [...prevPokemons, data];
-      });
-      setResetData((prevResetData) => {
-        return [...prevResetData, data];
-      });
-    }
-    // let tempData = [];
-    // for (let i = 1; i < 100; i++) {
+    // for (let i = 1; i < 500; i++) {
     //   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
     //   const data = await response.json();
-    //   tempData = [...tempData, data];
+    //   setPokemons((prevPokemons) => {
+    //     return [...prevPokemons, data];
+    //   });
+    //   setResetData((prevResetData) => {
+    //     return [...prevResetData, data];
+    //   });
     // }
-    // setPokemons([...tempData]);
-    // setResetData([...tempData]);
+    let tempData = [];
+    for (let i = 1; i < 800; i++) {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+      const data = await response.json();
+      tempData = [...tempData, data];
+    }
+    setPokemons([...tempData]);
+    setResetData([...tempData]);
   }
 
   return (
@@ -53,7 +53,7 @@ function App() {
         />
         <Route
           path="/pokemons/:name"
-          element={<PokemonInfo pokemons={pokemons} />}
+          element={<PokemonInfo pokemons={resetData} />}
         />
       </Routes>
     </div>

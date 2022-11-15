@@ -11,7 +11,9 @@ const PokemonFinder = ({ setPokemons, pokemons, getPokemonsData }) => {
   const handleSend = (e) => {
     e.preventDefault();
     pokemonName !== "" &&
-      setPokemons(pokemons.filter((pokemon) => pokemon.name === pokemonName));
+      setPokemons(
+        pokemons.filter((pokemon) => pokemon.name === pokemonName.toLowerCase())
+      );
     console.log(pokemons);
   };
 

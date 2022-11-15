@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import Pokemon from "../components/pages/pokemonRendering/Pokemon";
 import PokemonFinder from "../components/pages/pokemonRendering/PokemonFinder";
 import DropDownMenu from "../components/pages/pokemonRendering/DropDownMenu";
+import { useEffect } from "react";
 
 function PokemonRendering({ pokemons, setPokemons, resetData }) {
   const [isDrop, setIsDrop] = useState(false);
   const [options, setOptions] = useState("Inferior number");
+
+  useEffect(() => {
+    document.title = "Pokédex | Pokemons";
+  }, []);
 
   function handleSurprise() {
     setOptions("Inferior number");
@@ -23,9 +28,6 @@ function PokemonRendering({ pokemons, setPokemons, resetData }) {
       <Pokemon pokemon={pokemon} />
     </Link>
   ));
-
-  const jsonArray = JSON.stringify(pokemons);
-  console.log(jsonArray);
 
   console.log(pokemons);
 
@@ -63,8 +65,17 @@ function PokemonRendering({ pokemons, setPokemons, resetData }) {
         </div>
       </div>
       {/* <Link to="/">Go back home</Link> */}
-      <div className="grid grid-cols-4 gap-8">
-        {pokemons.length > 0 && renderPokemons}
+      <div className="flex items-center">
+        {/* {pokemons.length > 0 && renderPokemons} */}
+        {pokemons.length > 0 ? (
+          <div className="grid grid-cols-4 gap-8">{renderPokemons}</div>
+        ) : (
+          <img
+            src={
+              "https://thumbs.gfycat.com/FrightenedAntiqueDaddylonglegs-size_restricted.gif"
+            }
+          />
+        )}
       </div>
     </div>
   );

@@ -84,11 +84,7 @@ function PokemonData({ name, pokemon, pokemonData }) {
           src={pokemon[0].sprites.other["official-artwork"].front_default}
         />
         <div className=" w-2/6 space-y-8 px-4">
-          <p className="">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-            porro magni officia amet itaque aliquam, assumenda nulla facilis
-            ullam hic.
-          </p>
+          <p className="">{pokemonData && pokemonData.description}</p>
           <div className="grid grid-cols-2 p-3 gap-y-6 bg-blue-400 font-bold rounded-xl">
             <div className="flex flex-col space-y-3">
               <p className="text-white">Height</p>

@@ -12,6 +12,7 @@ function PokemonInfo({ pokemons }) {
   const pokemon = pokemons.filter((pokemon) => pokemon.name === name);
 
   useEffect(() => {
+    document.title = `${name[0].toUpperCase() + name.slice(1)} | Pokédex`;
     getPokemonSpecies(name);
   }, [name]);
 
@@ -28,14 +29,11 @@ function PokemonInfo({ pokemons }) {
           ? "unknown"
           : pokemonSpecies.habitat.name,
       category: pokemonSpecies.genera,
+      description: pokemonSpecies.flavor_text_entries[0].flavor_text,
     });
   }
 
   console.log("rendered");
-  console.log(
-    pokemonData &&
-      pokemonData.category.find((elem) => elem.language.name === "en").genus
-  );
 
   return (
     <>

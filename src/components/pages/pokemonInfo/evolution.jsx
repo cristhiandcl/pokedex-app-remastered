@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function Evolution({ pokemonEvolution }) {
   const [evolution, setEvolution] = useState();
+  const [p, setP] = useState("");
 
   useEffect(() => {
     settingEvolutions();
@@ -13,6 +14,7 @@ function Evolution({ pokemonEvolution }) {
     const response = await fetch(pokemonEvolution.evolution);
     const incomingData = await response.json();
     if (incomingData.chain.evolves_to.length > 0) {
+      setP("");
       if (incomingData.chain.evolves_to[0].evolves_to.length > 0) {
         setEvolution([
           incomingData.chain.species,
@@ -27,19 +29,26 @@ function Evolution({ pokemonEvolution }) {
       }
     } else {
       setEvolution([incomingData.chain.species]);
+      setP("This pokémon has no evolutions");
     }
   }
   // console.log(evolution);
   return (
     <div className="flex flex-col border-2 bg-gray-100 rounded-md rounded-bl-3xl p-16 space-y-7">
       <p className="font-bold text-3xl text-center">Evolutions</p>
+      {p !== "" && <p className="font-bold">{p}</p>}
       <div className="flex space-x-4 ">
         {evolution !== undefined &&
           evolution.map((evo, i) => {
             const id = evo.url.slice(42, evo.url.length - 1);
             return (
               <div key={i} className="flex items-center space-x-4">
-                <div className="flex flex-col items-center">
+                <div
+                  onClick={() =>
+                    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+                  }
+                  className="flex flex-col items-center"
+                >
                   <div className="flex items-center justify-center border-4 border-black w-[220px] h-[220px] rounded-full">
                     <Link to={`/pokemons/${evo.name}`}>
                       <img
