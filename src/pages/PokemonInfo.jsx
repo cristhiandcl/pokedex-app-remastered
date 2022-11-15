@@ -37,7 +37,7 @@ function PokemonInfo({ pokemons }) {
 
   return (
     <>
-      {pokemon.length > 0 && pokemonData && (
+      {pokemon.length > 0 && pokemonData ? (
         <div className="flex flex-col items-center space-y-10 py-8">
           <PokemonData
             name={name}
@@ -53,6 +53,14 @@ function PokemonInfo({ pokemons }) {
               <p>Go back to the Pokedex</p>
             </div>
           </Link>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center h-screen">
+          <img
+            className="bg-transparent"
+            alt="loading pokemons..."
+            src={require("../images/pokeball.gif")}
+          />
         </div>
       )}
     </>
