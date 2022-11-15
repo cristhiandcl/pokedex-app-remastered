@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

@@ -70,10 +70,9 @@ function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
           <div className="grid grid-cols-4 gap-8">{renderPokemons}</div>
         ) : (
           <img
+            className="bg-transparent"
             alt="loading pokemons..."
-            src={
-              "https://thumbs.gfycat.com/FrightenedAntiqueDaddylonglegs-size_restricted.gif"
-            }
+            src={require("../images/pokeball.gif")}
           />
         )}
       </div>
