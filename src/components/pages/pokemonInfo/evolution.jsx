@@ -43,28 +43,29 @@ function Evolution({ pokemonEvolution }) {
             const id = evo.url.slice(42, evo.url.length - 1);
             return (
               <div key={i} className="flex items-center space-x-4">
-                <div
-                  onClick={() =>
-                    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-                  }
-                  className="flex flex-col items-center"
-                >
-                  <div className="flex items-center justify-center border-4 border-black w-[220px] h-[220px] rounded-full">
-                    <Link to={`/pokemons/${evo.name}`}>
+                <Link to={`/pokemons/${evo.name}`}>
+                  <div
+                    onClick={() =>
+                      window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+                    }
+                    className="flex flex-col items-center"
+                  >
+                    <div className="flex items-center justify-center border-4 border-black w-[220px] h-[220px] rounded-full">
                       <img
+                        alt={evo.name}
                         key={evo.name}
                         className="w-[150px]"
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
                       />
-                    </Link>
+                    </div>
+                    <p className="font-bold text-gray-600 text-xl">
+                      <span className="text-black">
+                        {evo.name[0].toUpperCase() + evo.name.slice(1)}
+                      </span>{" "}
+                      N.° {id}
+                    </p>
                   </div>
-                  <p className="font-bold text-gray-600 text-xl">
-                    <span className="text-black">
-                      {evo.name[0].toUpperCase() + evo.name.slice(1)}
-                    </span>{" "}
-                    N.° {id}
-                  </p>
-                </div>
+                </Link>
                 {i < evolution.length - 1 && (
                   <p className="text-8xl font-bold">{">"}</p>
                 )}

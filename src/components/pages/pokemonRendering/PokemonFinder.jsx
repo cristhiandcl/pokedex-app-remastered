@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Hint } from "react-autocomplete-hint";
 
-const PokemonFinder = ({ setPokemons, pokemons, getPokemonsData }) => {
+const PokemonFinder = ({
+  setPokemons,
+  pokemons,
+  getPokemonsData,
+  pokemonsNames,
+}) => {
   const [pokemonName, setPokemonName] = useState("");
+
+  useEffect(() => {}, []);
 
   const handleChange = (event) => {
     event.target.name === "pokemonName" && setPokemonName(event.target.value);
-    pokemonName.length < 2 && getPokemonsData();
+    pokemonName.length < 1 && getPokemonsData();
   };
 
   const handleSend = (e) => {
@@ -14,7 +22,6 @@ const PokemonFinder = ({ setPokemons, pokemons, getPokemonsData }) => {
       setPokemons(
         pokemons.filter((pokemon) => pokemon.name === pokemonName.toLowerCase())
       );
-    console.log(pokemons);
   };
 
   const isInvalid = pokemonName === "";
@@ -24,17 +31,20 @@ const PokemonFinder = ({ setPokemons, pokemons, getPokemonsData }) => {
       <div>
         <form onSubmit={handleSend}>
           <div className="flex justify-center items-center space-x-4">
-            <input
-              className="text-xs rounded text-center w-fit p-4 border"
-              aria-label="Enter Pokemon name"
-              type="text"
-              placeholder="Pokemon Name"
-              value={pokemonName}
-              onChange={handleChange}
-              name="pokemonName"
-            />
+            <Hint options={pokemonsNames} allowTabFill={true}>
+              <input
+                className="text-xs rounded w-fit p-4 border"
+                aria-label="Enter Pokemon name"
+                type="text"
+                placeholder="Pokemon Name"
+                value={pokemonName}
+                onChange={handleChange}
+                name="pokemonName"
+              />
+            </Hint>
             <button type="submit">
               <img
+                alt="Pokeball button"
                 className={`h-[50px] ${
                   isInvalid && "cursor-not-allowed opacity-50"
                 }`}

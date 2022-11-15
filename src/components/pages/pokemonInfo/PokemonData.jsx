@@ -80,6 +80,7 @@ function PokemonData({ name, pokemon, pokemonData }) {
       </div>
       <div className="flex space-x-6 justify-center items-center px-20">
         <img
+          alt={name}
           className="rounded-xl p-4 bg-gray-100 w-[350px] h-[400px]"
           src={pokemon[0].sprites.other["official-artwork"].front_default}
         />

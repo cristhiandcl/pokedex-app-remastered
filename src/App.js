@@ -4,11 +4,11 @@ import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import PokemonInfo from "./pages/PokemonInfo";
 import { useState, useEffect } from "react";
-import { trial } from "./trial";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [resetData, setResetData] = useState([]);
+  const [pokemonsNames, setPokemonsNames] = useState([]);
 
   useEffect(() => {
     getData();
@@ -35,6 +35,7 @@ function App() {
     }
     setPokemons([...tempData]);
     setResetData([...tempData]);
+    setPokemonsNames(tempData.map((pokemon) => pokemon.name));
   }
 
   return (
@@ -48,6 +49,7 @@ function App() {
               pokemons={pokemons}
               setPokemons={setPokemons}
               resetData={resetData}
+              pokemonsNames={pokemonsNames}
             />
           }
         />

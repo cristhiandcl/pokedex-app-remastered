@@ -29,11 +29,11 @@ function PokemonInfo({ pokemons }) {
           ? "unknown"
           : pokemonSpecies.habitat.name,
       category: pokemonSpecies.genera,
-      description: pokemonSpecies.flavor_text_entries[0].flavor_text,
+      description: pokemonSpecies.flavor_text_entries.filter(
+        (elem) => elem.language.name === "en"
+      )[0].flavor_text,
     });
   }
-
-  console.log("rendered");
 
   return (
     <>

@@ -20,12 +20,12 @@ function Pokemon({ pokemon }) {
     fairy: "bg-pink-200",
   };
 
-  console.log("pokemon rendered");
   return (
     <div className="flex flex-col items-center justify-center hover:scale-105">
       <img
         className="rounded p-4 bg-gray-100 h-[200px] w-[200px]"
         src={pokemon.sprites.other["official-artwork"].front_default}
+        alt={pokemon.name}
       />
       <p className="text-gray-300 text-xs text-left w-3/4 mb-4">
         N.°{pokemon.id}
