@@ -7,18 +7,19 @@ import PokemonData from "../components/pages/pokemonInfo/PokemonData";
 
 function PokemonInfo({ pokemons }) {
   const [pokemonData, setPokemonData] = useState();
-  // const [pokemonCategory, setPokemonCategory] = useState();
   const { name } = useParams();
-  const pokemon = pokemons.filter((pokemon) => pokemon.name === name);
+  const pokemon = pokemons.filter((pokemon) => pokemon.name.includes(name));
+  const id = pokemon.length > 0 && pokemon[0].id;
+  console.log("done");
 
   useEffect(() => {
     document.title = `${name[0].toUpperCase() + name.slice(1)} | Pokédex`;
-    getPokemonSpecies(name);
-  }, [name]);
+    id && getPokemonSpecies(id);
+  }, [name, id]);
 
-  async function getPokemonSpecies(name) {
+  async function getPokemonSpecies(id) {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${name}/`
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
     );
     const pokemonSpecies = await response.json();
     setPokemonData({
@@ -34,6 +35,8 @@ function PokemonInfo({ pokemons }) {
       )[0].flavor_text,
     });
   }
+  // console.log(pokemonData);
+  // console.log(JSON.stringify(pokemons));
 
   return (
     <>
@@ -43,7 +46,6 @@ function PokemonInfo({ pokemons }) {
             name={name}
             pokemon={pokemon}
             pokemonData={pokemonData}
-            // pokemonCategory={pokemonCategory}
           />
           <div>
             <Evolution pokemonEvolution={pokemonData} />
