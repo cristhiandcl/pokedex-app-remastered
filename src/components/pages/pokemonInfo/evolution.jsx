@@ -10,9 +10,7 @@ function Evolution({ pokemonEvolution }) {
     settingEvolutions();
   }, []);
 
-  async function settingEvolutions() {
-    const response = await fetch(pokemonEvolution.evolution);
-    const incomingData = await response.json();
+  function evolutionHandle(incomingData) {
     if (incomingData.chain.evolves_to.length > 0) {
       setP("");
       if (incomingData.chain.evolves_to[0].evolves_to.length > 0) {
@@ -32,7 +30,28 @@ function Evolution({ pokemonEvolution }) {
       setP("This pokémon has no evolutions");
     }
   }
-  // console.log(evolution);
+
+  async function settingEvolutions() {
+    if (pokemonEvolution.evolution !== null) {
+      const response = await fetch(pokemonEvolution.evolution);
+      const incomingData = await response.json();
+      evolutionHandle(incomingData);
+    } else {
+      const response2 = await fetch(pokemonEvolution.evolvesFrom.url);
+      console.log(response2);
+      const incomingData2 = await response2.json();
+      console.log(incomingData2);
+      const response3 = await fetch(incomingData2.evolution_chain.url);
+      const incomingData3 = await response3.json();
+      evolutionHandle(incomingData3);
+      setP("");
+      setEvolution((prevEvolution) => [
+        ...prevEvolution,
+        { name: pokemonEvolution.name, url: pokemonEvolution.species },
+      ]);
+    }
+  }
+  console.log(evolution);
   return (
     <div className="flex flex-col border-2 bg-gray-100 rounded-md rounded-bl-3xl p-16 space-y-7">
       <p className="font-bold text-3xl text-center">Evolutions</p>

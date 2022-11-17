@@ -23,7 +23,11 @@ function PokemonInfo({ pokemons }) {
     );
     const pokemonSpecies = await response.json();
     setPokemonData({
-      evolution: pokemonSpecies.evolution_chain.url,
+      evolution:
+        pokemonSpecies.evolution_chain && pokemonSpecies.evolution_chain.url,
+      evolvesFrom: pokemonSpecies.evolves_from_species,
+      name: pokemonSpecies.name,
+      species: `https://pokeapi.co/api/v2/pokemon-species/${id}/`,
       varieties: pokemonSpecies.varieties,
       habitat:
         pokemonSpecies.habitat === null
@@ -35,7 +39,7 @@ function PokemonInfo({ pokemons }) {
       )[0].flavor_text,
     });
   }
-  // console.log(pokemonData);
+  // console.log(pokemon);
   // console.log(JSON.stringify(pokemons));
 
   return (
