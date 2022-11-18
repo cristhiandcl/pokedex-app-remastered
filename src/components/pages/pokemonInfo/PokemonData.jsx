@@ -1,7 +1,15 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useEffect, useState } from "react";
+import VarietiesDropDownMenu from "./VarietiesDropDownMenu";
 
-function PokemonData({ name, pokemon, pokemonData }) {
+function PokemonData({
+  name,
+  pokemon,
+  setPokemons,
+  pokemonData,
+  pokemons,
+  resetData,
+}) {
   const [pokemonWeakness, setPokemonWeakness] = useState([]);
 
   const types = {
@@ -53,8 +61,12 @@ function PokemonData({ name, pokemon, pokemonData }) {
     ],
   };
 
+  const tempVar = pokemonWeakness.map((weakness) => weakness.name);
+  const WeaknessToRender = [...new Set(tempVar)];
+
   useEffect(() => {
     async function getPokemonWeakness() {
+      setPokemonWeakness([]);
       for (let i = 0; i < pokemon[0].types.length; i++) {
         const response2 = await fetch(
           `https://pokeapi.co/api/v2/type/${pokemon[0].types[i].type.name}/`
@@ -67,22 +79,32 @@ function PokemonData({ name, pokemon, pokemonData }) {
       }
     }
     getPokemonWeakness();
-  }, []);
-
-  const tempVar = pokemonWeakness.map((weakness) => weakness.name);
-  const WeaknessToRender = [...new Set(tempVar)];
+  }, [name]);
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4">
-      <div className="text-3xl sm:text-5xl font-bold">
+      <div className="text-2xl sm:text-5xl font-bold text-center">
         {name[0].toUpperCase() + name.slice(1)}{" "}
         <span className="text-gray-300">N.° {pokemon[0].id}</span>
       </div>
+      {pokemonData.varieties.length > 1 && (
+        <VarietiesDropDownMenu
+          varieties={pokemonData.varieties}
+          name={name}
+          resetData={resetData}
+          pokemons={pokemons}
+          setPokemons={setPokemons}
+        />
+      )}
       <div className="flex flex-col md:flex-row justify-center items-center space-y-8 sm:w-full lg:w-3/4 px-4 sm:px-12 sm:space-x-8">
         <img
           alt={name}
           className="rounded-xl p-4 bg-gray-100 w-[350px] h-[400px]"
-          src={pokemon[0].sprites.other["official-artwork"].front_default}
+          src={
+            pokemon[0].sprites.other["official-artwork"].front_default
+              ? pokemon[0].sprites.other["official-artwork"].front_default
+              : pokemon[0].sprites.front_default
+          }
         />
         <div className="w-3/4 space-y-8">
           <p className="text-center">

@@ -72,7 +72,13 @@ function App() {
         />
         <Route
           path="/pokemons/:name"
-          element={<PokemonInfo pokemons={resetData} />}
+          element={
+            <PokemonInfo
+              pokemons={pokemons}
+              resetData={resetData}
+              setPokemons={setPokemons}
+            />
+          }
         />
       </Routes>
     </div>

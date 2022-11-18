@@ -4,6 +4,7 @@ import Pokemon from "../components/pages/pokemonRendering/Pokemon";
 import PokemonFinder from "../components/pages/pokemonRendering/PokemonFinder";
 import DropDownMenu from "../components/pages/pokemonRendering/DropDownMenu";
 import { useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
   const [isDrop, setIsDrop] = useState(false);
@@ -11,6 +12,7 @@ function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
 
   useEffect(() => {
     document.title = "Pokédex | Pokemons";
+    setPokemons([...resetData]);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
@@ -25,7 +27,7 @@ function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
   }
 
   const renderPokemons = pokemons.map((pokemon) => (
-    <Link key={pokemon.name} to={`/pokemons/${pokemon.name}`}>
+    <Link key={uuid()} to={`/pokemons/${pokemon.name}`}>
       <Pokemon pokemon={pokemon} />
     </Link>
   ));

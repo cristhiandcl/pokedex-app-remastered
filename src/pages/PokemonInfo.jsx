@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 import Evolution from "../components/pages/pokemonInfo/evolution";
 import PokemonData from "../components/pages/pokemonInfo/PokemonData";
 
-function PokemonInfo({ pokemons }) {
+function PokemonInfo({ pokemons, setPokemons, resetData }) {
   const [pokemonData, setPokemonData] = useState();
   const { name } = useParams();
   const pokemon = pokemons.filter((pokemon) => pokemon.name.includes(name));
   const id = pokemon.length > 0 && pokemon[0].id;
-  console.log("done");
 
   useEffect(() => {
     document.title = `${name[0].toUpperCase() + name.slice(1)} | Pokédex`;
@@ -39,7 +38,7 @@ function PokemonInfo({ pokemons }) {
       )[0].flavor_text,
     });
   }
-  // console.log(pokemon);
+  // console.log(pokemons);
   // console.log(JSON.stringify(pokemons));
 
   return (
@@ -49,6 +48,9 @@ function PokemonInfo({ pokemons }) {
           <PokemonData
             name={name}
             pokemon={pokemon}
+            pokemons={pokemons}
+            setPokemons={setPokemons}
+            resetData={resetData}
             pokemonData={pokemonData}
           />
           <div>

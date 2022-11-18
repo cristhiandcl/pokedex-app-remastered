@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 function Pokemon({ pokemon }) {
   const types = {
     normal: "bg-stone-500",
@@ -36,7 +38,7 @@ function Pokemon({ pokemon }) {
       <div className="text-black flex space-x-3">
         {pokemon.types.map((elem) => (
           <p
-            key={elem.type.name}
+            key={uuid()}
             className={`text-xs border rounded px-4 py-0.5 ${
               types[elem.type.name]
             }`}
