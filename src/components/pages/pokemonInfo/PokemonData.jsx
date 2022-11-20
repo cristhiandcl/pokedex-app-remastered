@@ -1,6 +1,8 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useEffect, useState } from "react";
 import VarietiesDropDownMenu from "./VarietiesDropDownMenu";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 function PokemonData({
   name,
@@ -178,14 +180,25 @@ function PokemonData({
             <p className="text-3xl font-bold text-black text-center">Type</p>
             <div className="grid gap-x-2 grid-cols-2">
               {pokemon[0].types.map((elem) => (
-                <p
-                  key={elem.type.name}
-                  className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${
-                    types[elem.type.name]
-                  }`}
-                >
-                  {elem.type.name[0].toUpperCase() + elem.type.name.slice(1)}
-                </p>
+                <Link to="/pokemons" key={uuid()}>
+                  <p
+                    key={uuid()}
+                    className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${
+                      types[elem.type.name]
+                    }`}
+                    onClick={() =>
+                      setPokemons(
+                        resetData.filter((pokemon) =>
+                          pokemon.types
+                            .map((types) => types.type.name)
+                            .includes(elem.type.name)
+                        )
+                      )
+                    }
+                  >
+                    {elem.type.name[0].toUpperCase() + elem.type.name.slice(1)}
+                  </p>
+                </Link>
               ))}
             </div>
           </div>
@@ -196,12 +209,23 @@ function PokemonData({
             <div className="grid gap-x-2 grid-cols-2 gap-y-3 sm:grid-cols-3">
               {pokemonWeakness !== undefined &&
                 WeaknessToRender.map((weakness) => (
-                  <p
-                    key={weakness}
-                    className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${types[weakness]}`}
-                  >
-                    {weakness[0].toUpperCase() + weakness.slice(1)}
-                  </p>
+                  <Link to="/pokemons" key={uuid()}>
+                    <p
+                      key={uuid()}
+                      onClick={() =>
+                        setPokemons(
+                          resetData.filter((pokemon) =>
+                            pokemon.types
+                              .map((types) => types.type.name)
+                              .includes(weakness)
+                          )
+                        )
+                      }
+                      className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${types[weakness]}`}
+                    >
+                      {weakness[0].toUpperCase() + weakness.slice(1)}
+                    </p>
+                  </Link>
                 ))}
             </div>
           </div>

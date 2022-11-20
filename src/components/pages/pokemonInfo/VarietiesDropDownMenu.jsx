@@ -70,7 +70,7 @@ function VarietiesDropDownMenu({
           <Link to={`/pokemons/${variety.pokemon.name}`}>
             <div
               onMouseEnter={() => SetisChange(!isChange)}
-              id={RandomId}
+              key={RandomId}
               className={classNames(
                 active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                 "block w-full px-4 py-2 text-center font-bold text-sm"
@@ -92,7 +92,7 @@ function VarietiesDropDownMenu({
           {
             <div className="flex items-center space-x-2">
               <img
-                alt="Pokeball"
+                alt="pokeball"
                 className={`h-[25px]`}
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
               />{" "}

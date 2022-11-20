@@ -12,7 +12,7 @@ function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
 
   useEffect(() => {
     document.title = "Pokédex | Pokemons";
-    setPokemons([...resetData]);
+    // setPokemons([...resetData]);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
