@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -63,14 +63,14 @@ function VarietiesDropDownMenu({
   //   console.log(pokemons);
 
   const varietiesToRender = varieties.map((variety) => {
-    const RandomId = uuid();
+    // const RandomId = uuid();
     return (
       <Menu.Item>
         {({ active }) => (
           <Link to={`/pokemons/${variety.pokemon.name}`}>
             <div
               onMouseEnter={() => SetisChange(!isChange)}
-              id={RandomId}
+              // id={RandomId}
               className={classNames(
                 active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                 "block w-full px-4 py-2 text-center font-bold text-sm"
