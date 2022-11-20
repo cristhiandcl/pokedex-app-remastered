@@ -70,7 +70,7 @@ function VarietiesDropDownMenu({
           <Link to={`/pokemons/${variety.pokemon.name}`}>
             <div
               onMouseEnter={() => SetisChange(!isChange)}
-              key={RandomId}
+              id={RandomId}
               className={classNames(
                 active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                 "block w-full px-4 py-2 text-center font-bold text-sm"
