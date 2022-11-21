@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,28 +16,18 @@ function VarietiesDropDownMenu({
   name,
   resetData,
 }) {
-  //   const [varietiesToRender, setVarietiesToRender] = useState([]);
   const [newPokemon, setNewPokemon] = useState([]);
   const [isChange, SetisChange] = useState(false);
-  //   const varietiesRefactored =
-  //     varieties &&
-  //     varieties.map((variety) => ({ url: variety.url, name: variety.name }));
-
-  //   console.log(
-  //     pokemons.find((pokemon) => pokemon.name === varieties[2].pokemon.name)
-  //   );
 
   useEffect(() => {
     function getPokemon() {
       varieties.map(async (variety) => {
         const response = await fetch(variety.pokemon.url);
         const pokemon = await response.json();
-        // console.log(pokemon);
         if (
           pokemons.find((pokemon) => pokemon.name === variety.pokemon.name) ===
           undefined
         ) {
-          //   console.log("not in pokedex");
           setNewPokemon((prevNewPokemon) => [
             ...prevNewPokemon,
             {
@@ -54,34 +44,31 @@ function VarietiesDropDownMenu({
         }
       });
     }
-    // varietiesRefactored && getPokemon();
-    // setPokemons([...resetData]);
     getPokemon();
     setPokemons([...resetData, ...newPokemon]);
-  }, [varieties, isChange]);
-  //   console.log("Varieties", newPokemon);
-  //   console.log(pokemons);
+  }, [isChange]);
 
-  const varietiesToRender = varieties.map((variety) => {
-    // const RandomId = uuid();
+  const varietiesToRender = varieties.map((variety, i) => {
+    const RandomId = uuid();
     return (
-      <Menu.Item>
-        {({ active }) => (
-          <Link to={`/pokemons/${variety.pokemon.name}`}>
-            <div
-              onMouseEnter={() => SetisChange(!isChange)}
-              // id={RandomId}
-              className={classNames(
-                active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                "block w-full px-4 py-2 text-center font-bold text-sm"
-              )}
-            >
-              {variety.pokemon.name[0].toUpperCase() +
-                variety.pokemon.name.slice(1)}
-            </div>
-          </Link>
-        )}
-      </Menu.Item>
+      <div key={i}>
+        <Menu.Item>
+          {({ active }) => (
+            <Link to={`/pokemons/${variety.pokemon.name}`}>
+              <div
+                onMouseEnter={() => SetisChange(!isChange)}
+                className={classNames(
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                  "block w-full px-4 py-2 text-center font-bold text-sm"
+                )}
+              >
+                {variety.pokemon.name[0].toUpperCase() +
+                  variety.pokemon.name.slice(1)}
+              </div>
+            </Link>
+          )}
+        </Menu.Item>
+      </div>
     );
   });
 

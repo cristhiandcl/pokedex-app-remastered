@@ -20,29 +20,31 @@ function PokemonInfo({ pokemons, setPokemons, resetData }) {
   }, [name, id]);
 
   async function getPokemonSpecies(id) {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
-    );
-    const pokemonSpecies = await response.json();
-    setPokemonData({
-      evolution:
-        pokemonSpecies.evolution_chain && pokemonSpecies.evolution_chain.url,
-      evolvesFrom: pokemonSpecies.evolves_from_species,
-      name: pokemonSpecies.name,
-      species: `https://pokeapi.co/api/v2/pokemon-species/${id}/`,
-      varieties: pokemonSpecies.varieties,
-      habitat:
-        pokemonSpecies.habitat === null
-          ? "unknown"
-          : pokemonSpecies.habitat.name,
-      category: pokemonSpecies.genera,
-      description: pokemonSpecies.flavor_text_entries.filter(
-        (elem) => elem.language.name === "en"
-      )[0].flavor_text,
-    });
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+      );
+      const pokemonSpecies = await response.json();
+      setPokemonData({
+        evolution:
+          pokemonSpecies.evolution_chain && pokemonSpecies.evolution_chain.url,
+        evolvesFrom: pokemonSpecies.evolves_from_species,
+        name: pokemonSpecies.name,
+        species: `https://pokeapi.co/api/v2/pokemon-species/${id}/`,
+        varieties: pokemonSpecies.varieties,
+        habitat:
+          pokemonSpecies.habitat === null
+            ? "unknown"
+            : pokemonSpecies.habitat.name,
+        category: pokemonSpecies.genera,
+        description: pokemonSpecies.flavor_text_entries.filter(
+          (elem) => elem.language.name === "en"
+        )[0].flavor_text,
+      });
+    } catch (error) {
+      return true;
+    }
   }
-  // console.log(pokemons);
-  // console.log(JSON.stringify(pokemons));
 
   return (
     <>
