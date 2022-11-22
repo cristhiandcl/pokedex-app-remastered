@@ -83,7 +83,7 @@ function VarietiesDropDownMenu({
                 className={`h-[25px]`}
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
               />{" "}
-              <p>{name}</p>
+              <p>{name[0].toUpperCase() + name.slice(1)}</p>
             </div>
           }
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />

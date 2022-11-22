@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Evolution from "../components/pages/pokemonInfo/evolution";
 import PokemonData from "../components/pages/pokemonInfo/PokemonData";
 
-function PokemonInfo({ pokemons, setPokemons, resetData }) {
+function PokemonInfo({ pokemons, setPokemons, resetData, types }) {
   const [pokemonData, setPokemonData] = useState();
   const { name } = useParams();
   const a = pokemons.filter((pokemon) => pokemon.name.includes(name));
@@ -51,6 +51,7 @@ function PokemonInfo({ pokemons, setPokemons, resetData }) {
       {pokemon.length > 0 && pokemonData ? (
         <div className="flex flex-col items-center space-y-10 py-8">
           <PokemonData
+            types={types}
             name={name}
             pokemon={pokemon}
             pokemons={pokemons}

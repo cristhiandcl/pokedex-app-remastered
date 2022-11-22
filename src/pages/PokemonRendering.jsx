@@ -6,7 +6,13 @@ import DropDownMenu from "../components/pages/pokemonRendering/DropDownMenu";
 import { useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
-function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
+function PokemonRendering({
+  pokemons,
+  setPokemons,
+  resetData,
+  pokemonsNames,
+  types,
+}) {
   const [isDrop, setIsDrop] = useState(false);
   const [options, setOptions] = useState("Inferior number");
 
@@ -28,7 +34,7 @@ function PokemonRendering({ pokemons, setPokemons, resetData, pokemonsNames }) {
 
   const renderPokemons = pokemons.map((pokemon) => (
     <Link key={uuid()} to={`/pokemons/${pokemon.name}`}>
-      <Pokemon pokemon={pokemon} />
+      <Pokemon pokemon={pokemon} types={types} />
     </Link>
   ));
 

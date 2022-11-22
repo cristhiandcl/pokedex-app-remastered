@@ -11,29 +11,9 @@ function PokemonData({
   pokemonData,
   pokemons,
   resetData,
+  types,
 }) {
   const [pokemonWeakness, setPokemonWeakness] = useState([]);
-
-  const types = {
-    normal: "bg-stone-500",
-    fighting: "bg-red-800",
-    flying: "bg-blue-200",
-    poison: "bg-fuchsia-500",
-    ground: "bg-yellow-100",
-    rock: "bg-yellow-600",
-    bug: "bg-lime-500",
-    ghost: "bg-violet-600",
-    steel: "bg-slate-400",
-    fire: "bg-red-500",
-    water: "bg-sky-500",
-    grass: "bg-green-500",
-    electric: "bg-yellow-500",
-    psychic: "bg-pink-300",
-    ice: "bg-sky-400",
-    dragon: "bg-purple-600",
-    dark: "bg-amber-900",
-    fairy: "bg-pink-200",
-  };
 
   const data = {
     stats: [
@@ -178,14 +158,15 @@ function PokemonData({
         <div className="space-y-6 order-1 md:order-2 w-full">
           <div className="flex flex-col space-y-6">
             <p className="text-3xl font-bold text-black text-center">Type</p>
-            <div className="grid gap-x-2 grid-cols-2">
+            <div className="flex justify-around">
               {pokemon[0].types.map((elem) => (
                 <Link to="/pokemons" key={uuid()}>
-                  <p
-                    key={uuid()}
-                    className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${
-                      types[elem.type.name]
-                    }`}
+                  <img
+                    src={types[elem.type.name].image}
+                    className="w-14"
+                    alt={types[elem.type.name].name}
+                    // onMouseEnter={() => console.log(types[elem.type.name].name)}
+                    title={types[elem.type.name].name.toUpperCase()}
                     onClick={() =>
                       setPokemons(
                         resetData.filter((pokemon) =>
@@ -195,9 +176,16 @@ function PokemonData({
                         )
                       )
                     }
+                  />
+                  {/* <p
+                    key={uuid()}
+                    className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${
+                      types[elem.type.name]
+                    }`}
+                    
                   >
                     {elem.type.name[0].toUpperCase() + elem.type.name.slice(1)}
-                  </p>
+                  </p> */}
                 </Link>
               ))}
             </div>
@@ -206,11 +194,27 @@ function PokemonData({
             <p className="text-3xl font-bold text-black text-center">
               Weakness
             </p>
-            <div className="grid gap-x-2 grid-cols-2 gap-y-3 sm:grid-cols-3">
+            <div className="flex justify-around">
               {pokemonWeakness !== undefined &&
                 WeaknessToRender.map((weakness) => (
                   <Link to="/pokemons" key={uuid()}>
-                    <p
+                    <img
+                      src={types[weakness].image}
+                      className="w-14"
+                      alt={types[weakness].name}
+                      // onMouseEnter={() => console.log(types[elem.type.name].name)}
+                      title={types[weakness].name.toUpperCase()}
+                      onClick={() =>
+                        setPokemons(
+                          resetData.filter((pokemon) =>
+                            pokemon.types
+                              .map((types) => types.type.name)
+                              .includes(weakness)
+                          )
+                        )
+                      }
+                    />
+                    {/* <p
                       key={uuid()}
                       onClick={() =>
                         setPokemons(
@@ -224,7 +228,7 @@ function PokemonData({
                       className={`text-xl text-center border font-bold rounded-xl px-4 py-0.5 ${types[weakness]}`}
                     >
                       {weakness[0].toUpperCase() + weakness.slice(1)}
-                    </p>
+                    </p> */}
                   </Link>
                 ))}
             </div>
