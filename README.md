@@ -8,6 +8,7 @@ This project was created with reactJs and styled with TailwindCss, it's also ful
 
 * react
 * react-router-dom
+* gh-pages
 * react-autocomplete-hint
 * uuid
 * @headlessui/react
