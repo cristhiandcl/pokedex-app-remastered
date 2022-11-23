@@ -18,13 +18,13 @@ This project was created with reactJs and styled with TailwindCss, it's also ful
 
 ![image](https://user-images.githubusercontent.com/83930705/203441537-7f903711-6d5f-47ec-9309-763a58ee6e3d.png)
 
-Here you can find some information about any pokemon.
-
 ## `Pokedex page`
+
+Here you can find some information about any pokemon.
 
 ![image](https://user-images.githubusercontent.com/83930705/203441888-2d2dd9ee-4927-4d86-be2c-ef20d33326dd.png)
  
- You can scroll down and find manually any pokemon or you can simply type down the pokemon name to find it \
+ You can scroll down and find manually your pokemon or you can simply type down the pokemon's name to find it \
  easily
  
 ![image](https://user-images.githubusercontent.com/83930705/203442553-f384246e-4070-42c5-b69c-f037be403f55.png)
