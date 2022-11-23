@@ -1,10 +1,24 @@
 # WELCOME TO THE POKEDEX
 
+This project was created with reactJs and styled with TailwindCss, it's also fully responsive so you can check it out in any device
+
+## `Libraries`
+
+* react
+* react-router-dom
+* react-autocomplete-hint
+* uuid
+* @headlessui/react
+* @heroicons/react
+* @ramonak/react-progress-bar
+
+## `Home page`
+
 ![image](https://user-images.githubusercontent.com/83930705/203441537-7f903711-6d5f-47ec-9309-763a58ee6e3d.png)
 
 Here you can find some information about any pokemon.
 
-## `Main menu`
+## `Pokedex page`
 
 ![image](https://user-images.githubusercontent.com/83930705/203441888-2d2dd9ee-4927-4d86-be2c-ef20d33326dd.png)
  
@@ -20,7 +34,7 @@ You can also rearrange the pokemons
 
 ![image](https://user-images.githubusercontent.com/83930705/203442631-15bb805f-9fc0-4ed0-81e4-9ed27033608c.png)
 
-## `Pokemon card`
+## `Pokemon's info page`
 
 Some relevant information about the pokemon selected
 
