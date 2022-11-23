@@ -25,7 +25,7 @@ Here you can find some information about any pokemon.
 
 ![image](https://user-images.githubusercontent.com/83930705/203441888-2d2dd9ee-4927-4d86-be2c-ef20d33326dd.png)
  
- You can scroll down and find manually your pokemon or you can simply type down the pokemon's name to find it \
+ You can scroll down and find manually your pokemon or you can type down the pokemon's name to find it \
  easily
  
 ![image](https://user-images.githubusercontent.com/83930705/203442553-f384246e-4070-42c5-b69c-f037be403f55.png)
@@ -39,7 +39,7 @@ You can also rearrange the pokemons
 
 ## `Pokemon's info page`
 
-Some relevant information about the pokemon selected
+Some relevant information about the pokemon clicked
 
 ![image](https://user-images.githubusercontent.com/83930705/203443113-dfbb1053-9b33-4835-bd85-1da56931e567.png)
 ![image](https://user-images.githubusercontent.com/83930705/203443131-19a9909a-e0b4-456a-9ae3-c7cf7f3d56ef.png)
