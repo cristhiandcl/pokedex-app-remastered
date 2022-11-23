@@ -2,6 +2,8 @@
 
 This project was created with reactJs and styled with TailwindCss, it's also fully responsive so you can check it out in any device
 
+* https://cristhiandcl.github.io/pokedex-app-remastered/
+
 ## `Libraries`
 
 * react
