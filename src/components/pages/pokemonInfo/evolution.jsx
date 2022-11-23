@@ -46,9 +46,7 @@ function Evolution({ pokemonEvolution }) {
       evolutionHandle(incomingData);
     } else {
       const response2 = await fetch(pokemonEvolution.evolvesFrom.url);
-      // console.log(response2);
       const incomingData2 = await response2.json();
-      // console.log(incomingData2);
       const response3 = await fetch(incomingData2.evolution_chain.url);
       const incomingData3 = await response3.json();
       evolutionHandle(incomingData3);
@@ -59,7 +57,6 @@ function Evolution({ pokemonEvolution }) {
       ]);
     }
   }
-  // console.log(evolution);
   return (
     <div className="flex flex-col border-2 bg-gray-100 rounded-md rounded-bl-3xl p-16 space-y-7">
       <p className="font-bold text-3xl text-center">Evolutions</p>

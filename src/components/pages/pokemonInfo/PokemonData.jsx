@@ -165,7 +165,6 @@ function PokemonData({
                     src={types[elem.type.name].image}
                     className="w-14"
                     alt={types[elem.type.name].name}
-                    // onMouseEnter={() => console.log(types[elem.type.name].name)}
                     title={types[elem.type.name].name.toUpperCase()}
                     onClick={() =>
                       setPokemons(

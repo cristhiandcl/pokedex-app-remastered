@@ -12,10 +12,8 @@ function PokemonInfo({ pokemons, setPokemons, resetData, types }) {
   const b = resetData.filter((pokemon) => pokemon.name.includes(name));
   const pokemon = a.length > 0 ? a : b;
   const id = pokemon.length > 0 && pokemon[0].id;
-  // console.log(a, b);
   useEffect(() => {
     document.title = `${name[0].toUpperCase() + name.slice(1)} | Pokédex`;
-    // setPokemons([...resetData]);
     id && getPokemonSpecies(id);
   }, [name, id]);
 
