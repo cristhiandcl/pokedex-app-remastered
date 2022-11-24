@@ -9,7 +9,6 @@ This project is also an improved version of https://cristhiandcl.github.io/poked
 
 * react
 * react-router-dom
-* gh-pages
 * react-autocomplete-hint
 * uuid
 * @headlessui/react
