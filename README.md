@@ -1,6 +1,7 @@
 # WELCOME TO THE POKEDEX
 
-This project was created with reactJs and styled with TailwindCss, it's also fully responsive so you can check it out in any device
+This project was created with reactJs and styled with TailwindCss, it's also fully responsive so you can check it out in any device.\ 
+This project is also an improved version of https://cristhiandcl.github.io/pokedex-app/
 
 * https://cristhiandcl.github.io/pokedex-app-remastered/
 
